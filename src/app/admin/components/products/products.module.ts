@@ -15,6 +15,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FileuploadModule } from 'src/app/services/common/fileupload/fileupload.module';
 import { DialogModule } from '@angular/cdk/dialog';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+import { SelectProductImageDialogComponent } from 'src/app/dialogs/select-product-image-dialog/select-product-image-dialog.component';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     CreateComponent,
     ReadComponent,
     DeleteDirective,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SelectProductImageDialogComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,8 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     MatPaginatorModule,
     MatDialogModule,
     FileuploadModule,
-    DialogModule
+    DialogModule,
+    MatCardModule
     
     
     
@@ -47,7 +52,8 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     ProductsComponent,
     CreateComponent,
     ReadComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SelectProductImageDialogComponent
   ]
 })
 export class ProductsModule { }

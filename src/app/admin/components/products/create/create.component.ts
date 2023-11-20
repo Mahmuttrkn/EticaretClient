@@ -23,13 +23,13 @@ export class CreateComponent extends BaseComponent implements OnInit {
   }
 
   @Output() createdProduct: EventEmitter<any> = new EventEmitter();
-  @Output() fileUploadOptions: Partial< FileUploadOptions> = {
-    action: "upload",
-    controller: "products",
-    explanation: "Dosya Seçin",
-    isAdminPage: true,
-    accept:".png, .jpg, .jpeg"
-  };
+  // @Output() fileUploadOptions: Partial< FileUploadOptions> = {
+  //   action: "upload",
+  //   controller: "products",
+  //   explanation: "Dosya Seçin",
+  //   isAdminPage: true,
+  //   accept:".png, .jpg, .jpeg"
+  // };
 
   create(name:HTMLInputElement,price:HTMLInputElement,stock:HTMLInputElement){
     this.showSpinner(SpinnerType.Ballscale);

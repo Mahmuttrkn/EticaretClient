@@ -1,0 +1,43 @@
+<br>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"></div>
+    <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
+        <div class="form-group">
+            <label for="nameSurname">Ad Soyad</label>
+            <input type="text" formControlName="nameSurname" class="form-control" id="nameSurname"  placeholder="Ad Soyad" [ngClass]="{'is-invalid': component.nameSurname.errors}">
+            <small class="invalid-feedback"  *ngIf="submitted && component.nameSurname.errors?.required"style="color: red;">Ad Soyad Boş Bırakılamaz.</small>
+            <small class="invalid-feedback"  *ngIf="submitted && (component.nameSurname.errors?.maxlength) || (component.nameSurname.errors?.minlength) "style="color: red;">En Fazla 20 En Az 3  Karakter Girişi Sağlayınız.</small>
+          </div>
+          <br>
+        <div class="form-group">
+          <label for="username">Kullanıcı Adı</label>
+          <input type="text" formControlName="username" class="form-control" id="username"  placeholder="Kullanıcı Adı" [ngClass]="{'is-invalid': component.username.errors}" >
+          <small class="invalid-feedback" *ngIf="submitted && component.username.errors?.required" style="color: red;">Kullanıcı Adı Boş Bırakılamaz.</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email Adresi" [ngClass]="{'is-invalid': component.email.errors}">
+            <small class="invalid-feedback" *ngIf="submitted && component.email.errors?.required" style="color: red;">Email Adresi Boş Bırakılamaz.</small>
+            <small class="invalid-feedback" *ngIf="submitted && component.email.errors?.email" style="color: red;">Geçerli Bir Email Adresi Giriniz.</small>
+          </div>
+          <br>
+        <div class="form-group">
+          <label for="password">Şifre</label>
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Şifre" [ngClass]="{'is-invalid': component.password.errors}">
+          <small class="invalid-feedback" *ngIf="submitted && component.password.errors?.required" style="color: red;">Şifre Boş Bırakılamaz.</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="passwordConfirm">Şifre Tekrar</label>
+            <input type="password" formControlName="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Şifre Tekrar" [ngClass]="{'is-invalid': component.passwordConfirm.errors}">
+            <small class="invalid-feedback" *ngIf="submitted && component.passwordConfirm.errors?.required" style="color: red;">Şifre Tekrar Boş Bırakılamaz.</small>
+            <small  *ngIf="submitted && frm.hasError('notSame')" style="color: red;">Şifre Eşleşmiyor.</small>
+
+          </div>
+       <br>
+        <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+      </form>
+    <div class="col-md-3"></div>
+</div>

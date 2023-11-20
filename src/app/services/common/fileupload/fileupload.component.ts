@@ -51,7 +51,7 @@ export class FileuploadComponent {
             controller:this.options.controller,
             action: this.options.action,
             queryString:this.options.queryString,
-            headers:new HttpHeaders({"responseType":"blob"})
+            headers:new HttpHeaders({"responseType":"Blob"})
           },fileData).subscribe(data => {
       
             const message : string = "Dosya Yükleme İşlemi Başarılı"

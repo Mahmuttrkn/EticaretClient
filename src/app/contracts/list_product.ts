@@ -4,6 +4,6 @@ export class List_Product{
     stock:number;
     price:number;
     createdDate: Date;
-    updatedDate : Date
+    updatedDate : Date;
 
 }

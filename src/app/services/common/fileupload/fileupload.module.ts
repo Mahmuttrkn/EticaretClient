@@ -6,6 +6,8 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FileUploadDialogComponent } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 
@@ -19,10 +21,12 @@ import { FileUploadDialogComponent } from 'src/app/dialogs/file-upload-dialog/fi
     CommonModule,
     NgxFileDropModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   exports: [
-    FileuploadComponent
+    FileuploadComponent,
+    FileUploadDialogComponent
   ]
 })
 export class FileuploadModule { }

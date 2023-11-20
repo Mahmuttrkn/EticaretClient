@@ -20,9 +20,9 @@ export class AppComponent {
     };
   }  
   
-  $.get("https://localhost:7238/api/Products",data => {
-    console.log(data)
-  })
+  //  $.get("https://localhost:7238/",data => {
+  //   console.log(data)
+
 
 
 //$(document).ready(()=>{

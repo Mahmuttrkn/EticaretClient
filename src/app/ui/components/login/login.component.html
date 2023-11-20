@@ -1,0 +1,24 @@
+<br>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"></div>
+
+        <div class="form-group">
+            <label for="userName">Kullanıcı Adı</label>
+            <br>
+            <input type="text" #txtUserNameOrEmail class="form-control" id="userName"  placeholder="Kullanıcı Adı & Email" >
+            <small class="invalid-feedback"   style="color: red;">*****</small>
+          </div>
+          <br>
+        <div class="form-group">
+          <label for="password">Şifre</label>
+          <br>
+          <input type="password" #txtPassword class="form-control" id="password" placeholder="Şifre">
+          <small class="invalid-feedback"  style="color: red;">*****</small>
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" style="margin-top: 5px; width: 150px; margin-left: 13px;" (click)="login(txtUserNameOrEmail.value,txtPassword.value)">Giriş Yap</button>
+
+    <div class="col-md-3"></div>
+</div>
