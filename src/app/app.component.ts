@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Position } from './services/admin/alertify.service';
+import { AuthService } from './services/common/auth.service';
 import { CustomToastrService, ToastrMessageType, ToastrOptions, ToastrPosition } from './services/ui/custom-toastr.service';
 declare var $: any
 
@@ -13,20 +14,10 @@ declare var $: any
 export class AppComponent {
   title = 'ETicaretClient';
 
-  constructor(private toastrService:CustomToastrService) {
-    //toastrService.message(" Baba","Destur!!!!",{
-      //messageType: ToastrMessageType.Info,
-      //position:ToastrPosition.TopRight
-    };
+  constructor(public authService: AuthService) {
+    authService.idendtityCheck();
+    }
   }  
   
-  //  $.get("https://localhost:7238/",data => {
-  //   console.log(data)
-
-
-
-//$(document).ready(()=>{
- // alert("asd")
-//})
 
 
