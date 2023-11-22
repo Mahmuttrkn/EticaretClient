@@ -17,7 +17,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
   const router = inject(Router);
   const toastrService = inject(CustomToastrService);
   const spinner = inject(NgxSpinnerService);
-  const authService = inject(AuthService)
+  const authService = inject(AuthService);
   
   spinner.show(SpinnerType.Ballscale);
 
@@ -32,7 +32,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
 //     expiredToken = true;
 //   }
 
-  if(_isAuthenticated)
+  if(!_isAuthenticated)
   {
     router.navigate(["login"],{queryParams:{returnUrl: state.url}});
     toastrService.message("Oturum açmanız gerekmektedir.","Yetkisiz Erişim",{

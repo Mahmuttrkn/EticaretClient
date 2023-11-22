@@ -20,16 +20,15 @@ export class AuthService {
   } catch {
     expiredToken = true;
   }
- if(token !=null && expiredToken){
+ if(token !=null && (expiredToken==false)){
   _isAuthenticated=true;
  }
+ else if((expiredToken==true) && token ==null){
   _isAuthenticated = false;
-
+ }
   }
-
   get isAuthenticated():boolean{
     return _isAuthenticated;
   }
 }
-
 export let _isAuthenticated: boolean;
