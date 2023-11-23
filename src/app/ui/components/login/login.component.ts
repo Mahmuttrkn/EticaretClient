@@ -1,5 +1,6 @@
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { AuthService } from 'src/app/services/common/auth.service';
@@ -14,10 +15,14 @@ export class LoginComponent extends BaseComponent implements OnInit  {
 
   constructor(private userService: UsercreateService, 
      spinner: NgxSpinnerService,
-    private authService: AuthService, 
+    private authService: AuthService,
+    private socialAuthService:SocialAuthService,
     private activetedRoute: ActivatedRoute,
     private router: Router ) {
-    super(spinner);
+    super(spinner)
+    socialAuthService.authState.subscribe((user: SocialUser)=>{
+      console.log(user)
+    });
   }
 
   ngOnInit(): void {
@@ -37,5 +42,6 @@ export class LoginComponent extends BaseComponent implements OnInit  {
       this.hideSpinner(SpinnerType.Ballscale);
      
     });
+
   }
 }
