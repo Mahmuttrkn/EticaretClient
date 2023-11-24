@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { GoogleLoginProvider, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { LoginComponent } from './ui/components/login/login.component';
-import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login/socialauth.service';
+import { SocialAuthService, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 
 
 
