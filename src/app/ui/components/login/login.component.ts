@@ -1,3 +1,4 @@
+
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,15 +25,27 @@ export class LoginComponent extends BaseComponent implements OnInit  {
     socialAuthService.authState.subscribe(async (user: SocialUser)=>{
       console.log(user)
       this.showSpinner(SpinnerType.Ballscale);
-    await userService.googleLogin(user,() => {
-      this.authService.idendtityCheck();
-      this.hideSpinner(SpinnerType.Ballscale)});
+      
+      switch(user.provider){
+        case "GOOGLE":
+        await userService.googleLogin(user,() => {
+          
+          
+        })
+        break;
+        case "FACEBOOK":
+          //...
+          break;
+      }
     });
+    this.authService.idendtityCheck();
+    this.hideSpinner(SpinnerType.Ballscale);
+    
   }
-
   ngOnInit(): void {
     
   }
+  
   async login(UserNameOrEmail:string,Password:string)
   {
     this.showSpinner(SpinnerType.Ballscale);
@@ -46,7 +59,6 @@ export class LoginComponent extends BaseComponent implements OnInit  {
       })
       this.hideSpinner(SpinnerType.Ballscale);
      
-    });
-
-  }
+    });   
+}
 }

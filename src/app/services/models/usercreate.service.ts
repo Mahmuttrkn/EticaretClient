@@ -50,7 +50,7 @@ export class UsercreateService {
 
    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
 
-   if(tokenResponse)
+   if(tokenResponse != null && tokenResponse.token.expiration)
    {
     localStorage.setItem("accessToken",tokenResponse.token.accessToken);
 
@@ -58,6 +58,13 @@ export class UsercreateService {
       messageType:ToastrMessageType.Success,
       position:ToastrPosition.TopRight
     })
+   }
+   else if(tokenResponse == null )
+   {
+      this.toastrService.message("ERROR","HATA",{
+        messageType:ToastrMessageType.Error,
+        position:ToastrPosition.TopRight
+      })
    }
    callBackFunction();
   }
