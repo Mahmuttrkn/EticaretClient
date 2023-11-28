@@ -9,7 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonModule, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { LoginComponent } from './ui/components/login/login.component';
 import { SocialAuthService, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 
@@ -31,6 +31,7 @@ import { SocialAuthService, SocialAuthServiceConfig } from '@abacritt/angularx-s
     UiModule,
     BrowserModule,
     BrowserAnimationsModule,
+    GoogleSigninButtonModule,
     SocialLoginModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
@@ -66,8 +67,6 @@ import { SocialAuthService, SocialAuthServiceConfig } from '@abacritt/angularx-s
   ],
   
   bootstrap: [AppComponent],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+  
 })
 export class AppModule { }

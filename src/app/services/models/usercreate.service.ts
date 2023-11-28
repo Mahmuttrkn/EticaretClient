@@ -42,22 +42,22 @@ export class UsercreateService {
     
     callBackFunction();
   }
- async googleLogin(user: SocialUser,callBackFunction?: () => void): Promise<any>{
+ async googleLogin(user: SocialUser, callBackFunction?: () => void): Promise<any>{
     const observable: Observable<SocialUser | TokenResponse> = this.httpclientService.post<SocialUser | TokenResponse>({
       action:"google-login",
       controller:"users"
-    },user);
+    },user)
 
    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
 
-   if(tokenResponse != null && tokenResponse.token.expiration)
+   if(tokenResponse != null)
    {
     localStorage.setItem("accessToken",tokenResponse.token.accessToken);
 
     this.toastrService.message("Google üzerinden giriş başarılı sağlanmıştır.","Giriş başarılı.",{
       messageType:ToastrMessageType.Success,
       position:ToastrPosition.TopRight
-    })
+    });
    }
    else if(tokenResponse == null )
    {
