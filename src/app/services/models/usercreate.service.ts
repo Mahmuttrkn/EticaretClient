@@ -21,51 +21,6 @@ export class UsercreateService {
     },user);
 
   return await firstValueFrom(observable) as create_user;
-  }
-  async login(UserNameOrEmail:string,Password:string, callBackFunction? : () => void): Promise<any> {
-    const observable:Observable<any | TokenResponse> = this.httpclientService.post<any | TokenResponse >({
-      controller:"users",
-      action:"login"
-    },{UserNameOrEmail,Password})
-
-    const token: TokenResponse = await firstValueFrom(observable) as TokenResponse;
-    if(token != null)
-    {
-      localStorage.setItem("accessToken",token.token.accessToken);
-
-
-      this.toastrService.message("Kullanıcı Girişi Sağlanmıştır","Giriş Başarılı.",{
-        messageType: ToastrMessageType.Success,
-        position: ToastrPosition.TopRight
-      });
-    }
-    
-    callBackFunction();
-  }
- async googleLogin(user: SocialUser, callBackFunction?: () => void): Promise<any>{
-    const observable: Observable<SocialUser | TokenResponse> = this.httpclientService.post<SocialUser | TokenResponse>({
-      action:"google-login",
-      controller:"users"
-    },user)
-
-   const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
-
-   if(tokenResponse != null)
-   {
-    localStorage.setItem("accessToken",tokenResponse.token.accessToken);
-
-    this.toastrService.message("Google üzerinden giriş başarılı sağlanmıştır.","Giriş başarılı.",{
-      messageType:ToastrMessageType.Success,
-      position:ToastrPosition.TopRight
-    });
-   }
-   else if(tokenResponse == null )
-   {
-      this.toastrService.message("ERROR","HATA",{
-        messageType:ToastrMessageType.Error,
-        position:ToastrPosition.TopRight
-      })
-   }
-   callBackFunction();
-  }
+ 
+}
 }

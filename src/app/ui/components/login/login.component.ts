@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { TokenResponse } from 'src/app/contracts/token/tokenResponse';
 import { AuthService } from 'src/app/services/common/auth.service';
+import { UserAuthService } from 'src/app/services/models/user-auth.service';
 import { UsercreateService } from 'src/app/services/models/usercreate.service';
 
 @Component({
@@ -15,7 +16,7 @@ import { UsercreateService } from 'src/app/services/models/usercreate.service';
 })
 export class LoginComponent extends BaseComponent implements OnInit  {
 
-  constructor(private userService: UsercreateService, 
+  constructor(private userService: UserAuthService, 
      spinner: NgxSpinnerService,
     private authService: AuthService,
     private socialAuthService:SocialAuthService,
