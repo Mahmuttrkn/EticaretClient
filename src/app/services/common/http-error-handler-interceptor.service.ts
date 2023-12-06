@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } 
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { Position } from '../admin/alertify.service';
+import { UserAuthService } from '../models/user-auth.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../ui/custom-toastr.service';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../ui/cu
 })
 export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
 
-  constructor(private toasterService: CustomToastrService) { }
+  constructor(private toasterService: CustomToastrService, private userAuthService:UserAuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -18,8 +19,11 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
         case HttpStatusCode.Unauthorized:
           this.toasterService.message("Bu işlemi yapmaya yetkiniz bulunmamaktadır.","Yetkisiz işlem.",{
             messageType:ToastrMessageType.Error,
-            position:ToastrPosition.TopRight
+            position:ToastrPosition.TopFullWidth
           });
+         this.userAuthService.refreshTokenLogin(localStorage.getItem("refreshToken")).then(data =>{
+
+         });
           break;
           case HttpStatusCode.InternalServerError:
           this.toasterService.message("Servise erişimde sorun yaşanmaktadır.","Servis hatası!",{
