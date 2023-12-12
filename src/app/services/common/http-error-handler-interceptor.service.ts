@@ -49,6 +49,7 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
               position:ToastrPosition.BottomFullWidth
             });
             break;
+            
       }
       return of(error);
     }));

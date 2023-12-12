@@ -18,6 +18,7 @@ import { HttpErrorHandlerInterceptorService } from './services/common/http-error
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,6 @@ import { HttpErrorHandlerInterceptorService } from './services/common/http-error
     SocialLoginModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-
     HttpClientModule,
     JwtModule.forRoot({
       config: {
