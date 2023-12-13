@@ -18,6 +18,7 @@ const routes: Routes = [
 {path:"",component:HomeComponent},
 {path:"basket",loadChildren: () => import("./ui/components/basket/basket.module").then(module=>module.BasketModule)},
 {path:"product",loadChildren: () => import("./ui/components/product/product.module").then(module=>module.ProductModule)},
+{path:"product/:pageNo",loadChildren: () => import("./ui/components/product/product.module").then(module=>module.ProductModule)},
 {path:"register",loadChildren:() => import("./ui/components/register/register.module").then(module=>module.RegisterModule)},
 {path:"login",loadChildren:() => import("./ui/components/login/login.module").then(module=>module.LoginModule)}
 
