@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
 
    this.currentPageNo= parseInt(params["pageNo"] ?? 1);
 
-    const data: {totalProductCount:number,products:List_Product[]} = await this.productService.read(this.currentPageNo - 1,this.pageSize,
+    const data: {totalProductCount:number,products:List_Product[]} = await this.productService.read(this.currentPageNo -1,this.pageSize,
       () => {
 
       },errorMessage => {
@@ -33,22 +33,22 @@ export class ListComponent implements OnInit {
       });
       this.products = data.products;
       this.totalProductCount = data.totalProductCount;
-      this.totalPageCount = Math.round(this.totalProductCount / 12);
+      this.totalPageCount = Math.ceil(this.totalProductCount / 12);
 
       this.pageList = [];
 
-      if(this.totalPageCount >=7)
+      if(this.totalPageCount >=4)
       {
         if(this.currentPageNo -3 <=0)
         {
-          for(let i =1; i<=7; i++)
+          for(let i =1; i<=4; i++)
           { 
               this.pageList.push(i);
           }
         }
         else if(this.currentPageNo + 3 >= this.totalPageCount)
         {
-          for(let i =this.totalPageCount-6; i<=this.totalPageCount; i++)
+          for(let i =this.totalPageCount-3; i<=this.totalPageCount; i++)
           { 
               this.pageList.push(i);
           }
