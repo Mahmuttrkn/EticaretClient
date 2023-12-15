@@ -36,7 +36,7 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     queryString:`id=${this.data}`,
     explanation: "Ürün Resmini Seçin",
     isAdminPage: true,
-    accept:".png, .jpg, .jpeg",
+    accept:".png, .jpg, .jpeg, .file",
   
   };
   
@@ -66,6 +66,13 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
     });
   
+  }
+  showCase(imageId:string)
+  {
+    this.spinnerService.show(SpinnerType.Ballscale);
+    this.productService.changeShowcaseImage(imageId,this.data as string,() => {
+      this.spinnerService.hide(SpinnerType.Ballscale);
+    });
   }
 
 }

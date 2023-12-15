@@ -3,6 +3,7 @@
   <app-fileupload  [options]="options" ></app-fileupload>
 
   <mat-card class="product-image"  *ngFor="let image of images" >
+    <input type="radio" name="img" (click)="showCase(image.id)">
     <mat-card-header>
     </mat-card-header>
     <img style="width: 150px; height: 150px;" mat-card-image [src]="image.path" >
