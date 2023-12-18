@@ -17,6 +17,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
 import { SelectProductImageDialogComponent } from 'src/app/dialogs/select-product-image-dialog/select-product-image-dialog.component';
 import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -43,7 +44,8 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     FileuploadModule,
     DialogModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
     
     
     
