@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SpinnerType } from './base/base.component';
 import { Position } from './services/admin/alertify.service';
 import { AuthService } from './services/common/auth.service';
+import { HttpClientService } from './services/common/http-client.service';
 import { CustomToastrService, ToastrMessageType, ToastrOptions, ToastrPosition } from './services/ui/custom-toastr.service';
 declare var $: any
 
@@ -20,7 +21,11 @@ export class AppComponent {
   constructor(public authService: AuthService,
     private spinner: NgxSpinnerService,
     private toastrService:CustomToastrService,
-    private router: Router) {
+    private router: Router,
+    private httpClientService:HttpClientService) {
+
+      
+
     authService.idendtityCheck();
     }
     

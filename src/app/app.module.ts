@@ -67,7 +67,6 @@ import { HttpErrorHandlerInterceptorService } from './services/common/http-error
     {provide:HTTP_INTERCEPTORS,useClass:HttpErrorHandlerInterceptorService, multi:true},
     
   ],
-  
   bootstrap: [AppComponent],
   
 })
