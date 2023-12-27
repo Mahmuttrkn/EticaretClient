@@ -1,6 +1,9 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { catchError, Observable, of } from 'rxjs';
+import { SpinnerType } from 'src/app/base/base.component';
 import { Position } from '../admin/alertify.service';
 import { UserAuthService } from '../models/user-auth.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../ui/custom-toastr.service';
@@ -10,18 +13,36 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../ui/cu
 })
 export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
 
-  constructor(private toasterService: CustomToastrService, private userAuthService:UserAuthService) { }
+  constructor(private toasterService: CustomToastrService,
+     private userAuthService:UserAuthService,
+     private router: Router,
+     private spinner:NgxSpinnerService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     return next.handle(req).pipe(catchError(error=>{
       switch (error.status) {
         case HttpStatusCode.Unauthorized:
-          this.toasterService.message("Bu işlemi yapmaya yetkiniz bulunmamaktadır.","Yetkisiz işlem.",{
-            messageType:ToastrMessageType.Error,
-            position:ToastrPosition.TopFullWidth
-          });
-         this.userAuthService.refreshTokenLogin(localStorage.getItem("refreshToken")).then(data =>{
+         
+         this.userAuthService.refreshTokenLogin(localStorage.getItem("refreshToken"),(state) => {
+          if(!state){
+            const url = this.router.url;
+            this.spinner.show(SpinnerType.Ballscale);
+            if(url=="/product")
+            {
+              this.toasterService.message("Sepete ürün eklemek için oturum açmanız gerekmektedir","Oturum açınız",{
+                messageType:ToastrMessageType.Info,
+                position:ToastrPosition.TopRight
+              });
+            }
+            else{
+              this.toasterService.message("Bu işlemi yapmaya yetkiniz bulunmamaktadır.","Yetkisiz işlem.",{
+                messageType:ToastrMessageType.Error,
+                position:ToastrPosition.TopFullWidth
+              });
+            }
+          }
+         }).then(data =>{
 
          });
           break;
@@ -51,6 +72,7 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
             break;
             
       }
+      this.spinner.hide(SpinnerType.Ballscale);
       return of(error);
     }));
   }

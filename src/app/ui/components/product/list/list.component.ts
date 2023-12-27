@@ -1,18 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { BaseUrl } from 'src/app/contracts/base_url';
+import { CreateBasketItem } from 'src/app/contracts/basket/create-basket-item';
 import { List_Product } from 'src/app/contracts/list_product';
+import { MessageType } from 'src/app/services/admin/alertify.service';
+import { BasketService } from 'src/app/services/models/basket.service';
 import { FileService } from 'src/app/services/models/file.service';
 import { ProductService } from 'src/app/services/models/product.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent extends BaseComponent implements OnInit {
 
-  constructor(private productService: ProductService, private activetedRoute: ActivatedRoute, private fileService: FileService){}
+  constructor(private productService: ProductService, 
+    private activetedRoute: ActivatedRoute,
+     private fileService: FileService,
+     private basketService: BasketService,
+     private customerToastrService: CustomToastrService,
+      spinner:NgxSpinnerService){
+      super(spinner)
+     }
   
   currentPageNo: number;
   totalProductCount: number;
@@ -92,5 +105,18 @@ export class ListComponent implements OnInit {
             }
      
   });
+  }
+  async addToBasket(products:List_Product){
+    this.showSpinner(SpinnerType.Ballscale)
+    let _basketItem:CreateBasketItem = new CreateBasketItem();
+    _basketItem.ProductId = products.id;
+    _basketItem.Quantity = 1;
+
+    await this.basketService.add(_basketItem);
+    this.hideSpinner(SpinnerType.Ballscale);
+    this.customerToastrService.message("Ürün Sepete Eklenmiştir","Başarılı",{
+      messageType:ToastrMessageType.Success,
+      position:ToastrPosition.TopFullWidth
+    });
   }
 }
