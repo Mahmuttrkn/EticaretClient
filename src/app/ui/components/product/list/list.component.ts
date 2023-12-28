@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { BaseUrl } from 'src/app/contracts/base_url';
-import { CreateBasketItem } from 'src/app/contracts/basket/create-basket-item';
+import { Create_Basket_Item } from 'src/app/contracts/basket/create-basket-item';
 import { List_Product } from 'src/app/contracts/list_product';
 import { MessageType } from 'src/app/services/admin/alertify.service';
 import { BasketService } from 'src/app/services/models/basket.service';
@@ -35,7 +35,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   baseUrl: BaseUrl;
   products: List_Product[];
 
-  ngOnInit() {
+ async ngOnInit() {
   this.activetedRoute.params.subscribe(async params => {
 
     this.baseUrl = await this.fileService.getBaseStorageUrl();
@@ -106,10 +106,10 @@ export class ListComponent extends BaseComponent implements OnInit {
      
   });
   }
-  async addToBasket(products:List_Product){
+  async addToBasket(product:List_Product){
     this.showSpinner(SpinnerType.Ballscale)
-    let _basketItem:CreateBasketItem = new CreateBasketItem();
-    _basketItem.ProductId = products.id;
+    let _basketItem:Create_Basket_Item = new Create_Basket_Item();
+    _basketItem.ProductId = product.id;
     _basketItem.Quantity = 1;
 
     await this.basketService.add(_basketItem);

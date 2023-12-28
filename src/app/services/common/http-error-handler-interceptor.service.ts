@@ -27,7 +27,7 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
          this.userAuthService.refreshTokenLogin(localStorage.getItem("refreshToken"),(state) => {
           if(!state){
             const url = this.router.url;
-            this.spinner.show(SpinnerType.Ballscale);
+            this.spinner.show(SpinnerType.Ballscale)
             if(url=="/product")
             {
               this.toasterService.message("Sepete ürün eklemek için oturum açmanız gerekmektedir","Oturum açınız",{
@@ -72,7 +72,7 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
             break;
             
       }
-      this.spinner.hide(SpinnerType.Ballscale);
+      this.spinner.hide(SpinnerType.Ballscale)
       return of(error);
     }));
   }

@@ -1,48 +1,47 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
-import { CreateBasketItem } from 'src/app/contracts/basket/create-basket-item';
-import { DeleteBasketItem } from 'src/app/contracts/basket/delete-basket-item';
-import { ListBasketItem } from 'src/app/contracts/basket/list-basket-item';
-import { UpdateBasketItem } from 'src/app/contracts/basket/update-basket-item';
+import { Create_Basket_Item } from 'src/app/contracts/basket/create-basket-item';
+import { List_Basket_Item } from 'src/app/contracts/basket/list_basket_item';
+import { Update_Basket_Item } from 'src/app/contracts/basket/update-basket-item';
+
 import { HttpClientService } from '../common/http-client.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
+  constructor(private httpClientService: HttpClientService) { }
 
-  constructor(private httpClientService:HttpClientService) { }
-
-  async get(): Promise<ListBasketItem[]>{
-    const observable : Observable<ListBasketItem[]> = this.httpClientService.get({
-      controller:"basket"
+  async get(): Promise<List_Basket_Item[]> {
+    const observable: Observable<List_Basket_Item[]> = this.httpClientService.get({
+      controller: "basket",
     });
 
-  return await firstValueFrom(observable);
+    return await firstValueFrom(observable);
   }
 
- async add(basket:CreateBasketItem): Promise<void>{
-   const creatObservable: Observable<any> = this.httpClientService.post({
-      controller:"basket",
+  async add(basketItem: Create_Basket_Item): Promise<void> {
+    const observable: Observable<any> = this.httpClientService.post({
+      controller: "basket"
+    }, basketItem);
 
-    },basket);
-    
-   await firstValueFrom(creatObservable);
+    await firstValueFrom(observable);
   }
 
- async put(updateBasket: UpdateBasketItem): Promise<void>{
-    const updateObservable: Observable<any> = this.httpClientService.put({
-      controller:"basket"
-    },updateBasket);
-    await firstValueFrom(updateObservable);
-  }
- async delete(deleteBasketItem:string)
-  {
-   const deleteObservable: Observable<any> = this.httpClientService.delete({
-      controller:"basket"
-    },deleteBasketItem);
+  async put(basketItem: Update_Basket_Item): Promise<void> {
+    const observable: Observable<any> = this.httpClientService.put({
+      controller: "basket"
+    }, basketItem)
 
-    await firstValueFrom(deleteObservable);
+    await firstValueFrom(observable);
+  }
+
+  async remove(basketItemId: string) {
+    const observable: Observable<any> = this.httpClientService.delete({
+      controller: "basket"
+    }, basketItemId);
+
+    await firstValueFrom(observable);
   }
 }
