@@ -50,6 +50,7 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
   ],
   providers: [
     {provide:"baseUrl",useValue:"https://localhost:7238/api",multi:true},
+    {provide:"signalRUrl",useValue:"https://localhost:7238/"},
     {
       provide:"SocialAuthServiceConfig",
       useValue:{
@@ -62,6 +63,7 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
             id:FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider("")
           }
+          
         ],
         onError: err => console.log(err)
       }as SocialAuthServiceConfig
