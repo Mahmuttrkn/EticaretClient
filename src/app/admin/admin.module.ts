@@ -5,6 +5,7 @@ import { ComponentsModule } from './components/components.module';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DialogModule } from '../dialogs/dialog/dialog.module';
 
 
 
@@ -16,7 +17,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ComponentsModule,
     RouterModule,
     MatSidenavModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule
   ],
   exports:[
     LayoutModule

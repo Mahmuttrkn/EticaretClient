@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     CreateComponent,
     ReadComponent,
     DeleteDirective,
-    DeleteDialogComponent,
+
     SelectProductImageDialogComponent
   ],
   imports: [
@@ -54,7 +54,7 @@ import { FormsModule } from '@angular/forms';
     ProductsComponent,
     CreateComponent,
     ReadComponent,
-    DeleteDialogComponent,
+ 
     SelectProductImageDialogComponent
   ]
 })

@@ -14,6 +14,8 @@ import { LoginComponent } from './ui/components/login/login.component';
 import { SocialAuthService, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { HttpErrorHandlerInterceptorService } from './services/common/http-error-handler-interceptor.service';
 import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
+import { BasketItemRemoveDialogComponent } from './dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
+import { DialogModule } from '@angular/cdk/dialog';
 
 
 
@@ -24,7 +26,8 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
   declarations: [
     AppComponent,
     LoginComponent,
-    DynamicLoadComponentDirective
+    DynamicLoadComponentDirective,
+
     
     
   ],
