@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
 import { create_order } from 'src/app/contracts/orders/create_order';
+import { List_Order } from 'src/app/contracts/orders/list_order';
 import { HttpClientService } from '../common/http-client.service';
 
 @Injectable({
@@ -16,5 +18,18 @@ export class OrderService {
     },order);
 
    await firstValueFrom(observable);
+  }
+  async getAllOrders(page:number=0,size:number=5,successCallBack?: ()=>void,errorCallBack?:(errorMessage:string)=>void): Promise<{totalOrderCount: number; orders: List_Order[]}>
+  {
+  const promisData: Promise<{totalOrderCount: number; orders: List_Order[]}>= this.httpClientService.get<{totalOrderCount: number; orders: List_Order[]}>({
+      controller:"order",
+      queryString:`page=${page}&size=${size}`
+
+    }).toPromise();
+
+    promisData.then(d => successCallBack())
+    .catch((errorResponse: HttpErrorResponse)=>errorCallBack(errorResponse.message))
+
+    return await promisData;
   }
 }

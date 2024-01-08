@@ -18,6 +18,7 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
 import { SelectProductImageDialogComponent } from 'src/app/dialogs/select-product-image-dialog/select-product-image-dialog.component';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { DeleteModule } from 'src/app/directives/admin/delete.module';
 
 
 
@@ -26,8 +27,6 @@ import { FormsModule } from '@angular/forms';
     ProductsComponent,
     CreateComponent,
     ReadComponent,
-    DeleteDirective,
-
     SelectProductImageDialogComponent
   ],
   imports: [
@@ -45,7 +44,8 @@ import { FormsModule } from '@angular/forms';
     FileuploadModule,
     DialogModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    DeleteModule
     
     
     
