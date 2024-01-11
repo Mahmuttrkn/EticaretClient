@@ -16,6 +16,7 @@ import { HttpErrorHandlerInterceptorService } from './services/common/http-error
 import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
 import { BasketItemRemoveDialogComponent } from './dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
 import { DialogModule } from '@angular/cdk/dialog';
+import { OrderDetailDialogComponent } from './dialogs/order-detail-dialog/order-detail-dialog.component';
 
 
 
@@ -26,7 +27,7 @@ import { DialogModule } from '@angular/cdk/dialog';
   declarations: [
     AppComponent,
     LoginComponent,
-    DynamicLoadComponentDirective,
+    DynamicLoadComponentDirective
 
     
     

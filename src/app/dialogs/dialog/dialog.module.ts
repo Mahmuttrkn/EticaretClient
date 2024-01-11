@@ -9,6 +9,10 @@ import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { BasketItemRemoveDialogComponent } from '../basket-item-remove-dialog/basket-item-remove-dialog.component';
 import { BasketShoppingCompleteComponent } from '../basket-shopping-complete/basket-shopping-complete.component';
+import { OrderDetailDialogComponent } from '../order-detail-dialog/order-detail-dialog.component';
+import { MatTable, MatTableModule } from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 
 
@@ -16,7 +20,8 @@ import { BasketShoppingCompleteComponent } from '../basket-shopping-complete/bas
   declarations: [
     DeleteDialogComponent,
     BasketItemRemoveDialogComponent,
-    BasketShoppingCompleteComponent
+    BasketShoppingCompleteComponent,
+    OrderDetailDialogComponent
   
   ],
   imports: [
@@ -25,13 +30,16 @@ import { BasketShoppingCompleteComponent } from '../basket-shopping-complete/bas
     MatButtonModule,
     FileuploadModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatToolbarModule
     
   ],
   exports:[
     DeleteDialogComponent,
     BasketItemRemoveDialogComponent,
-    BasketShoppingCompleteComponent
+    BasketShoppingCompleteComponent,
+    OrderDetailDialogComponent
    
   ]
 })
