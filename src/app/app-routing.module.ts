@@ -20,7 +20,9 @@ const routes: Routes = [
 {path:"product",loadChildren: () => import("./ui/components/product/product.module").then(module=>module.ProductModule)},
 {path:"product/:pageNo",loadChildren: () => import("./ui/components/product/product.module").then(module=>module.ProductModule)},
 {path:"register",loadChildren:() => import("./ui/components/register/register.module").then(module=>module.RegisterModule)},
-{path:"login",loadChildren:() => import("./ui/components/login/login.module").then(module=>module.LoginModule)}
+{path:"login",loadChildren:() => import("./ui/components/login/login.module").then(module=>module.LoginModule)},
+{path:"password-reset",loadChildren:() => import("./ui/components/password-reset/password-reset.module").then(module=>module.PasswordResetModule)},
+{path:"update-password/:userId/:resetToken",loadChildren:() => import("./ui/components/update-password/update-password.module").then(module=>module.UpdatePasswordModule)}
 
 ];
 
