@@ -67,10 +67,12 @@ updatePassword(password:string,passwordConfirm:string)
               },
       error => {
                   console.log(error);
-               })
+               });
+               this.hideSpinner(SpinnerType.Ballscale);
       }
     })
     
   }
+  
 }
 }

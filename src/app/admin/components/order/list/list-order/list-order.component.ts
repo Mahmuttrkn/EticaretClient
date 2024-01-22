@@ -39,8 +39,6 @@ async getOrders(){
     }))
     this.dataSource = new  MatTableDataSource<List_Order>(allOrders.orders);
     this.paginator.length = allOrders.totalOrderCount;
-    
-
 }
 
 async pageChanged(){
