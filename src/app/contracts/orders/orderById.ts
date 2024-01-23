@@ -6,5 +6,6 @@ export class List_OrderById{
     description:string;
     orderCode:string;
     basketItems:any[];
+    completed:boolean;
 
 }

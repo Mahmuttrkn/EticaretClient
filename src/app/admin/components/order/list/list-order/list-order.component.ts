@@ -23,7 +23,7 @@ export class ListOrderComponent extends BaseComponent {
     
   }
 
-  displayedColumns: string[] = ['orderCode', 'userName', 'totalPrice', 'createDate','details','delete'];
+  displayedColumns: string[] = ['orderCode', 'userName', 'totalPrice', 'createDate','completed','details','delete'];
   dataSource: MatTableDataSource<List_Order> = null;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
