@@ -18,6 +18,7 @@ import { BasketItemRemoveDialogComponent } from './dialogs/basket-item-remove-di
 import { DialogModule } from '@angular/cdk/dialog';
 import { OrderDetailDialogComponent } from './dialogs/order-detail-dialog/order-detail-dialog.component';
 import { CompleteOrderDialogComponent } from './dialogs/complete-order-dialog/complete-order-dialog.component';
+import { AuthorizeMenuDialogComponent } from './dialogs/authorize-menu-dialog/authorize-menu-dialog.component';
 
 
 

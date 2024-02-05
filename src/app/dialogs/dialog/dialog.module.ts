@@ -13,6 +13,9 @@ import { OrderDetailDialogComponent } from '../order-detail-dialog/order-detail-
 import { MatTable, MatTableModule } from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CompleteOrderDialogComponent } from '../complete-order-dialog/complete-order-dialog.component';
+import { AuthorizeMenuDialogComponent } from '../authorize-menu-dialog/authorize-menu-dialog.component';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 
 
@@ -23,7 +26,8 @@ import { CompleteOrderDialogComponent } from '../complete-order-dialog/complete-
     BasketItemRemoveDialogComponent,
     BasketShoppingCompleteComponent,
     OrderDetailDialogComponent,
-    CompleteOrderDialogComponent
+    CompleteOrderDialogComponent,
+   AuthorizeMenuDialogComponent
   
   ],
   imports: [
@@ -34,7 +38,8 @@ import { CompleteOrderDialogComponent } from '../complete-order-dialog/complete-
     MatCardModule,
     FormsModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatBadgeModule
     
   ],
   exports:[
@@ -42,7 +47,8 @@ import { CompleteOrderDialogComponent } from '../complete-order-dialog/complete-
     BasketItemRemoveDialogComponent,
     BasketShoppingCompleteComponent,
     OrderDetailDialogComponent,
-    CompleteOrderDialogComponent
+    CompleteOrderDialogComponent,
+    AuthorizeMenuDialogComponent
    
   ]
 })

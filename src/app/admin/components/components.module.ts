@@ -4,6 +4,8 @@ import { ProductsModule } from './products/products.module';
 import { CustomerModule } from './customer/customer.module';
 import { OrderModule } from './order/order.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthorizeMenuModule } from './authorize-menu/authorize-menu.module';
+import { RoleModule } from './role/role.module';
 
 
 
@@ -16,7 +18,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ProductsModule,
     CustomerModule,
     OrderModule,
-    DashboardModule
+    DashboardModule,
+    AuthorizeMenuModule,
+    RoleModule
    
   ]
 })
