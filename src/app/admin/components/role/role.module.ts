@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
+import { DeleteModule } from 'src/app/directives/admin/delete.module';
 
 
 
@@ -27,6 +28,7 @@ import { ListComponent } from './list/list.component';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    DeleteModule,
     MatPaginatorModule,
     MatCardModule,
     RouterModule.forChild([

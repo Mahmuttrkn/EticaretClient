@@ -20,9 +20,9 @@ export class RoleService {
   }
 
   
-  async getRoles(page:number=0,size:number=5,successCallBack?: ()=>void,errorCallBack?:(errorMessage:string)=>void): Promise<{totalRoleCount: number; roles: List_Role[]}>
+  async getRoles(page:number=0,size:number=5,successCallBack?: ()=>void,errorCallBack?:(errorMessage:string)=>void): Promise<{ datas: List_Role[],totalCount:number}>
   {
-  const promisData: Promise<{totalRoleCount: number; roles: List_Role[]}>= this.httpClientService.get<{totalRoleCount: number; roles: List_Role[]}>({
+  const promisData: Promise<{ datas: List_Role[],totalCount:number}>= this.httpClientService.get<{ datas: List_Role[],totalCount:number}>({
       controller:"role",
       queryString:`page=${page}&size=${size}`
 

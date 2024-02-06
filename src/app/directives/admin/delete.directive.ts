@@ -59,7 +59,7 @@ export class DeleteDirective {
   
              },700,()=>{
               this.callback.emit();
-              this.alertify.message("Ürün başarılı şekilde silinmiştir.",{
+              this.alertify.message(`${this.controller == 'role' ? 'Rol': 'Ürün'} başarılı şekilde silinmiştir.`,{
                 dismissOthers:true,
                 messageType:MessageType.Success,
                 position:Position.TopRight

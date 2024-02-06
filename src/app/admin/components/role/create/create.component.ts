@@ -17,10 +17,10 @@ export class CreateComponent extends BaseComponent {
     super(spinner);
   }
 
-  @Output() createdRole: EventEmitter<Create_Role> = new EventEmitter();
+  @Output() createdRole: EventEmitter<any> = new EventEmitter();
 
   create(name:HTMLInputElement){
-    this.showSpinner(SpinnerType.Ballscale);
+    this.showSpinner(SpinnerType.Ballscalemultiple);
 
     const create_role: Create_Role = new Create_Role();
     create_role.name=name.value;
@@ -35,23 +35,21 @@ export class CreateComponent extends BaseComponent {
       });
       return;
     }
-    
-    this.roleService.create(create_role,() =>{
-
-
-      this.hideSpinner(SpinnerType.Ballscalemultiple);
-      this.alertify.message("Role Başarılı Şekilde Eklenmiştir.",{
-        dismissOthers:true,
-        messageType:MessageType.Success,
-        position:Position.TopRight
-      });
-      this.createdRole.emit(create_role);
-    },errorMessage=> {
-      this.alertify.message(errorMessage,
-        {
+      this.roleService.create(create_role,() =>{
+        this.hideSpinner(SpinnerType.Ballscalemultiple);
+        this.alertify.message("Role Başarılı Şekilde Eklenmiştir.",{
           dismissOthers:true,
-          messageType:MessageType.Error,
+          messageType:MessageType.Success,
           position:Position.TopRight
-        })
-    });
-  }}
+        });
+        this.createdRole.emit(create_role);
+      },errorMessage=> {
+        this.alertify.message(errorMessage,
+          {
+            dismissOthers:true,
+            messageType:MessageType.Error,
+            position:Position.TopRight
+          })
+      });
+    }
+  }

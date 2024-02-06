@@ -1,3 +1,4 @@
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -37,20 +38,19 @@ export class ListComponent extends BaseComponent implements OnInit {
 
   
 async getRoles(){
-  const _rolesData: List_Role[] = [];
+ 
 
   this.showSpinner(SpinnerType.Ballscalemultiple);
-    const allRoles: {totalRoleCount: number; roles: List_Role[]}= await this.roleService.getRoles(this.paginator ? this.paginator.pageIndex:0,this.paginator ? this.paginator.pageSize:5,()=>this.hideSpinner(SpinnerType.Ballscalemultiple),errorMessage =>
+    const allRoles: { datas: List_Role[],totalCount: number}= await this.roleService.getRoles(this.paginator ? this.paginator.pageIndex:0,this.paginator ? this.paginator.pageSize:5,()=>this.hideSpinner(SpinnerType.Ballscalemultiple),errorMessage =>
     this.alertify.message(errorMessage, {
       dismissOthers:true,
       messageType: MessageType.Error,
       position:Position.TopRight
     }))
-    this.dataSource = new  MatTableDataSource<List_Role>(allRoles.roles);
-    this.paginator.length = allRoles.totalRoleCount;
-    
-   Object.values(allRoles.roles);
-
+    this.dataSource = new  MatTableDataSource<List_Role>(allRoles.datas);
+    this.paginator.length = allRoles.totalCount;
+   
+ 
 }
 
 
